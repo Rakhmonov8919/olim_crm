@@ -13,14 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: SSH to EC2 and deploy
+      - name: SSH to EC2 and deploy olim_crm project
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           script: |
-            cd /home/ubuntu/CRM-Django-project
+            cd /home/ubuntu/olim_crm
             git pull origin main
             docker-compose down
             docker-compose up -d --build
